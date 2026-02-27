@@ -1,0 +1,11 @@
+import { useQuery } from '@tanstack/react-query';
+import { BarbersApi } from '../api/BarbersApi';
+
+export const useListBarbershops = () => {
+  return useQuery({
+    queryKey: ['barbershops'],
+    queryFn: async () => {
+      return BarbersApi.getListBarbershops();
+    },
+  });
+};
