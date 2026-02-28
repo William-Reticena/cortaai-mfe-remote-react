@@ -9,3 +9,13 @@ export const useListBarbershops = () => {
     },
   });
 };
+
+export const useBarbershopDetails = (id: number) => {
+  return useQuery({
+    queryKey: ['barbershop', id],
+    enabled: !!id,
+    queryFn: async () => {
+      return BarbersApi.getBarbershopDetails(id);
+    },
+  });
+};
