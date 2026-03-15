@@ -82,12 +82,12 @@ const mockBarbers = [
   },
 ];
 
-const mockSlots = [
-  { barberId: 101, startAt: '2024-06-15T14:00:00Z', endAt: '2024-06-15T14:45:00Z', isAvailable: true },
-  { barberId: 101, startAt: '2024-06-15T15:00:00Z', endAt: '2024-06-15T15:45:00Z', isAvailable: true },
-  { barberId: 101, startAt: '2024-06-15T16:00:00Z', endAt: '2024-06-15T16:45:00Z', isAvailable: false },
-  { barberId: 102, startAt: '2024-06-16T10:00:00Z', endAt: '2024-06-16T10:45:00Z', isAvailable: true },
-];
+// const mockSlots = [
+//   { barberId: 101, startAt: '2024-06-15T14:00:00Z', endAt: '2024-06-15T14:45:00Z', isAvailable: true },
+//   { barberId: 101, startAt: '2024-06-15T15:00:00Z', endAt: '2024-06-15T15:45:00Z', isAvailable: true },
+//   { barberId: 101, startAt: '2024-06-15T16:00:00Z', endAt: '2024-06-15T16:45:00Z', isAvailable: false },
+//   { barberId: 102, startAt: '2024-06-16T10:00:00Z', endAt: '2024-06-16T10:45:00Z', isAvailable: true },
+// ];
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 

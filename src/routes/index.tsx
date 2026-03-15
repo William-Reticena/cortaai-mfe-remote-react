@@ -8,7 +8,7 @@ export const router = createBrowserRouter([
     element: <BarbershopListing />,
   },
   {
-    path: '/details/:id',
+    path: '/barbershop/:id',
     element: <BarbershopDetails />,
   },
   {
