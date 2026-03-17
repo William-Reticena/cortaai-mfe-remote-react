@@ -1,4 +1,5 @@
 export type ForProps<T> = {
-  each: T[];
   children: (item: T, index: number) => React.ReactNode;
+  each: T[];
+  fallback?: React.ReactNode;
 };

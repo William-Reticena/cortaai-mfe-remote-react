@@ -1,23 +1,29 @@
-import { Box, StatusBadge } from '@/shared';
+import { Box, If, Stack, StatusBadge, Typography } from '@/shared';
 
 import type { CardHeaderProps } from './CardHeaderProps';
+import { MapPin } from 'lucide-react';
 
 export function CardHeader({ icon }: CardHeaderProps) {
   return (
-    <Box className='flex items-center gap-4 p-4'>
-      {icon && <Box className='p-3 bg-orange-50 rounded-lg text-orange-400'> {icon} </Box>}
+    <Stack direction='row' className='gap-4'>
+      <If condition={icon}>
+        <Box className='p-3 bg-orange-50 rounded-lg text-orange-400'> {icon} </Box>
+      </If>
 
-      <Box className='flex flex-1 justify-between gap-4'>
+      <Stack direction='row' justify='between' className='flex-1 gap-4'>
         <Box>
-          <h3 className='mt-0'>Barbershop Name</h3>
+          <Typography variant='h3'>Barbershop Name</Typography>
 
-          <Box as='span'>Downtown</Box>
+          <Stack direction='row' align='center' className='items-center gap-1 text-gray-500'>
+            <MapPin className='w-4 h-4' />
+            <Typography variant='body2'>Downtown</Typography>
+          </Stack>
         </Box>
 
         <Box>
           <StatusBadge />
         </Box>
-      </Box>
-    </Box>
+      </Stack>
+    </Stack>
   );
 }
