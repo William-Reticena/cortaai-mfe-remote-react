@@ -1,8 +1,8 @@
 import { Box, If, Stack, Typography } from '@/shared';
 
-import type { SchedulesProps } from './SchedulesProps';
+import type { InfoItemProps } from './InfoItemProps';
 
-export function Schedules({ className, icon }: SchedulesProps) {
+export function InfoItem({ className, icon }: InfoItemProps) {
   return (
     <Box className={className}>
       <Stack direction='row' align='center' className='gap-2'>

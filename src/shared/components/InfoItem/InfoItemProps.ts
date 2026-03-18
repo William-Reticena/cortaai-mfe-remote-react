@@ -1,4 +1,4 @@
-export type SchedulesProps = {
+export type InfoItemProps = {
   className?: string;
   icon?: React.ReactNode;
 };
