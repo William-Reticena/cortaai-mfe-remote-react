@@ -12,7 +12,7 @@ export function BarbershopListing() {
     <Box className='max-w-3xl mx-auto p-4'>
       <h1>Barbershop Listing</h1>
 
-      <Stack className='gap-4'>
+      <Stack className='gap-4 flex-wrap'>
         <For each={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} fallback={<p>No barbershops found.</p>}>
           {(item) => (
             <Card className='w-full cursor-pointer' key={item} onClick={() => navigate(`/barbershop/${item}`)} pt={{ content: { className: 'p-0!' } }}>
