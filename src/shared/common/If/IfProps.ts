@@ -1,6 +1,7 @@
 export type IfProps = {
   condition: Item | Items | boolean;
   children: React.ReactNode;
+  elseCondition?: React.ReactNode;
 };
 
 type Items = string[] | number[] | boolean[] | React.ReactNode[] | object[];

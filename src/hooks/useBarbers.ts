@@ -10,12 +10,12 @@ export const useListBarbershops = () => {
   });
 };
 
-export const useBarbershopDetails = (id: number) => {
+export const useBarbershopDetails = (id: number | string) => {
   return useQuery({
     queryKey: ['barbershop', id],
     enabled: !!id,
     queryFn: async () => {
-      return BarbersApi.getBarbershopDetails(id);
+      return BarbersApi.getBarbershopDetails(Number(id));
     },
   });
 };

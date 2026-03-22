@@ -1,6 +1,6 @@
 import api from './client';
-import { mockBarbershopDetails } from '../mocks/Barbers';
 import { BarbershopListResponse } from '../shared/dtos/request/BarbershopListResponse';
+import { BarbershopDetailsResponse } from '../shared/dtos/request/BarbershopDetailsResponse';
 
 export class BarbersApi {
   static async getListBarbershops() {
@@ -10,6 +10,8 @@ export class BarbersApi {
   }
 
   static async getBarbershopDetails(id: number) {
-    return mockBarbershopDetails(id);
+    const response = await api.get<BarbershopDetailsResponse>(`/barbershops/${id}`);
+
+    return new BarbershopDetailsResponse(response.data);
   }
 }
