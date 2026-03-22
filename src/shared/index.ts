@@ -9,4 +9,4 @@ export { Stack } from './common/Stack';
 // Components
 export { CardHeader } from './components/CardHeader/CardHeader';
 export { InfoItem } from './components/InfoItem/InfoItem';
-export { StatusBadge } from './components/StatusBadge';
+export { StatusBadge } from './components/StatusBadge/StatusBadge';

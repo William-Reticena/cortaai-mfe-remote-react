@@ -3,7 +3,7 @@ import { Box, If, Stack, StatusBadge, Typography } from '@/shared';
 import type { CardHeaderProps } from './CardHeaderProps';
 import { MapPin } from 'lucide-react';
 
-export function CardHeader({ icon }: CardHeaderProps) {
+export function CardHeader({ address, icon, openStatus, title }: CardHeaderProps) {
   return (
     <Stack direction='row' className='gap-4'>
       <If condition={icon}>
@@ -12,16 +12,16 @@ export function CardHeader({ icon }: CardHeaderProps) {
 
       <Stack direction='row' justify='between' className='flex-1 gap-4'>
         <Box>
-          <Typography variant='h3'>Barbershop Name</Typography>
+          <Typography variant='h3'>{title}</Typography>
 
           <Stack direction='row' align='center' className='items-center gap-1 text-gray-500'>
             <MapPin className='w-4 h-4' />
-            <Typography variant='body2'>Downtown</Typography>
+            <Typography variant='body2'>{address}</Typography>
           </Stack>
         </Box>
 
         <Box>
-          <StatusBadge />
+          <StatusBadge isOpen={openStatus} />
         </Box>
       </Stack>
     </Stack>
