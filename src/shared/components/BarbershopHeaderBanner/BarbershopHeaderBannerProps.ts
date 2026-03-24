@@ -1,4 +1,4 @@
-export type CardHeaderProps = {
+export type BarbershopHeaderBannerProps = {
   icon?: React.ReactNode;
   title: string;
   address: string;

@@ -1,10 +1,11 @@
+import { MapPin } from 'lucide-react';
+
 import { Box, If, Stack, Typography } from '@/shared/common';
 import { StatusBadge } from '@/shared/components';
 
-import type { CardHeaderProps } from './CardHeaderProps';
-import { MapPin } from 'lucide-react';
+import type { BarbershopHeaderBannerProps } from './BarbershopHeaderBannerProps';
 
-export function CardHeader({ address, icon, openStatus, title }: CardHeaderProps) {
+export function BarbershopHeaderBanner({ address, icon, openStatus, title }: BarbershopHeaderBannerProps) {
   return (
     <Stack direction='row' className='gap-4'>
       <If condition={icon}>

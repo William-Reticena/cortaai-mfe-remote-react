@@ -4,7 +4,7 @@ import { Calendar, Clock, Scissors } from 'lucide-react';
 
 import { Box, Divider, For, Stack } from '@/shared/common';
 import { InfoItem } from '@/shared/components';
-import { CardHeader } from '@/shared/components/CardHeader/CardHeader';
+import { BarbershopHeaderBanner } from '@/shared/components/BarbershopHeaderBanner/BarbershopHeaderBanner';
 import { useListBarbershops } from '../../hooks/useBarbers';
 import { DateUtils } from '../../utils/DateUtils';
 
@@ -20,7 +20,7 @@ export function BarbershopListing() {
         <For each={data} fallback={<p>No barbershops found.</p>}>
           {(item) => (
             <Card className='w-full cursor-pointer' key={item.id} onClick={() => navigate(`/barbershop/${item.id}`)} pt={{ content: { className: 'p-0!' } }}>
-              <CardHeader title={item.nmBarbershop} address={item.dsAddress} icon={<Scissors />} openStatus={item.inOpen} />
+              <BarbershopHeaderBanner title={item.nmBarbershop} address={item.dsAddress} icon={<Scissors />} openStatus={item.inOpen} />
 
               <Divider className='my-4' />
 
