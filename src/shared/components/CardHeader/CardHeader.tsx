@@ -1,4 +1,5 @@
-import { Box, If, Stack, StatusBadge, Typography } from '@/shared';
+import { Box, If, Stack, Typography } from '@/shared/common';
+import { StatusBadge } from '@/shared/components';
 
 import type { CardHeaderProps } from './CardHeaderProps';
 import { MapPin } from 'lucide-react';

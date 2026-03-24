@@ -1,6 +1,5 @@
+import { BarbershopDetailsResponse, BarbershopListResponse } from '@/shared/dtos/response';
 import api from './client';
-import { BarbershopListResponse } from '../shared/dtos/request/BarbershopListResponse';
-import { BarbershopDetailsResponse } from '../shared/dtos/request/BarbershopDetailsResponse';
 
 export class BarbersApi {
   static async getListBarbershops() {

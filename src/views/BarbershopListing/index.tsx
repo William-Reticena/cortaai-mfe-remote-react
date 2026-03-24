@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router';
 import { Card } from 'primereact/card';
 import { Calendar, Clock, Scissors } from 'lucide-react';
 
-import { Box, Divider, For, InfoItem, Stack } from '@/shared';
+import { Box, Divider, For, Stack } from '@/shared/common';
+import { InfoItem } from '@/shared/components';
 import { CardHeader } from '@/shared/components/CardHeader/CardHeader';
 import { useListBarbershops } from '../../hooks/useBarbers';
 import { DateUtils } from '../../utils/DateUtils';

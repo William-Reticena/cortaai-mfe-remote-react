@@ -1,4 +1,4 @@
-import { Box } from '@/shared';
+import { Box } from '@/shared/common';
 
 import type { StatusBadgeProps } from './StatusBadgeProps';
 

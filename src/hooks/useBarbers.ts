@@ -11,11 +11,17 @@ export const useListBarbershops = () => {
 };
 
 export const useBarbershopDetails = (id: number | string) => {
+  const idNumber = Number(id);
+
+  if (isNaN(idNumber)) {
+    throw new Error('Invalid barbershop ID');
+  }
+
   return useQuery({
-    queryKey: ['barbershop', id],
+    queryKey: ['barbershop', idNumber],
     enabled: !!id,
     queryFn: async () => {
-      return BarbersApi.getBarbershopDetails(Number(id));
+      return BarbersApi.getBarbershopDetails(idNumber);
     },
   });
 };

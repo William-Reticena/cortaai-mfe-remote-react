@@ -1,4 +1,4 @@
-import { Box, If, Stack, Typography } from '@/shared';
+import { Box, If, Stack, Typography } from '@/shared/common';
 
 import type { InfoItemProps } from './InfoItemProps';
 
