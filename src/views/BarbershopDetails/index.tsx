@@ -11,6 +11,7 @@ import { Box, For, If, Stack, Typography } from '@/shared/common';
 import { useBarbershopDetails } from '../../hooks/useBarbers';
 import { HeaderDetails } from './components/HeaderDetails/HeaderDetails';
 import { InfoSection } from './components/InfoSection/InfoSection';
+import { ServiceSection } from './components/ServiceSection/ServiceSection';
 
 export function BarbershopDetails() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -22,28 +23,16 @@ export function BarbershopDetails() {
   return (
     <Box>
       <If condition={!isLoading} elseCondition={<p>Loading...</p>}>
-        {data && (
+        {data ? (
           <>
             <HeaderDetails title={data.barbershopDetails.nmBarbershop} address={data.barbershopDetails.dsAddress} openStatus={data.barbershopDetails.inOpen} />
 
             <Box className='max-w-3xl mx-auto px-4 py-6'>
               <InfoSection phone={data.barbershopDetails.dsPhone} closesAt={data.barbershopDetails.hrClosesAt} nextAvailableSchedule={data.barbershopDetails.dtNextAvailableSchedule} />
 
-              <Typography variant='h2'>Serviços</Typography>
+              <ServiceSection services={data.offerServices} />
 
-              <For each={[1, 2, 3, 4, 5]} fallback={<p>No services found.</p>}>
-                {(item) => (
-                  <Stack key={item} direction='row' className='gap-2 w-full justify-between px-4 py-2 rounded-lg border border-gray-300'>
-                    <Box>
-                      <Typography variant='h3'>Corte de Cabelo</Typography>
-                      <Typography variant='body2'>30 min</Typography>
-                    </Box>
-                    <Typography variant='h3'>R$ 50,00</Typography>
-                  </Stack>
-                )}
-              </For>
-
-              <Typography variant='h2'>Barbeiros</Typography>
+              <Typography variant='h3'>Barbeiros</Typography>
 
               <Stack direction='col' className='gap-4 my-4 flex-wrap'>
                 <For each={[1, 2, 3, 4, 5]} fallback={<p>No services found.</p>}>
@@ -96,6 +85,8 @@ export function BarbershopDetails() {
               </Dialog>
             </Box>
           </>
+        ) : (
+          <p>Barbershop not found.</p>
         )}
       </If>
     </Box>

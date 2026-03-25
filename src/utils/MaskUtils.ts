@@ -8,4 +8,8 @@ export class MaskUtils {
 
     return phone;
   }
+
+  static formatToBRL(value: number): string {
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
 }

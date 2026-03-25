@@ -37,8 +37,8 @@ const variantClassMap: Record<NonNullable<TypographyProps['variant']>, string> =
   body3: 'text-xs',
 };
 
-export function Typography({ bold, children, variant = 'body1' }: TypographyProps) {
+export function Typography({ bold, children, className, variant = 'body1' }: TypographyProps) {
   const tag = normalizedVariant(variant);
 
-  return createElement(tag, { className: `${variantClassMap[variant]}${bold ? ' font-bold' : ''}` }, children);
+  return createElement(tag, { className: `${variantClassMap[variant]}${bold ? 'font-bold' : ''} ${className || ''}` }, children);
 }

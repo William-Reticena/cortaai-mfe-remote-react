@@ -28,7 +28,7 @@ class BarbershopDetails {
   }
 }
 
-class OfferService {
+export class OfferService {
   readonly id: number;
   readonly nmService: string;
   readonly dsService: string;
