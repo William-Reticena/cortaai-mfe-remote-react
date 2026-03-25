@@ -1,2 +1,2 @@
-export { BarbershopDetailsResponse } from '../request/BarbershopDetailsResponse';
-export { BarbershopListResponse } from '../request/BarbershopListResponse';
+export { BarbershopDetailsResponse } from './BarbershopDetailsResponse';
+export { BarbershopListResponse } from './BarbershopListResponse';

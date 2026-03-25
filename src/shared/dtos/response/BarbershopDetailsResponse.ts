@@ -1,7 +1,7 @@
 export class BarbershopDetailsResponse {
-  barbershopDetails: BarbershopDetails;
-  offerServices: OfferService[];
-  barbers: Barber[];
+  readonly barbershopDetails: BarbershopDetails;
+  readonly offerServices: OfferService[];
+  readonly barbers: Barber[];
 
   constructor(data: BarbershopDetailsResponse) {
     this.barbershopDetails = new BarbershopDetails(data.barbershopDetails);
@@ -11,12 +11,12 @@ export class BarbershopDetailsResponse {
 }
 
 class BarbershopDetails {
-  nmBarbershop: string;
-  dsAddress: string;
-  dsPhone: string;
-  inOpen: boolean;
-  hrClosesAt: string;
-  dtNextAvailableSchedule: Date;
+  readonly nmBarbershop: string;
+  readonly dsAddress: string;
+  readonly dsPhone: string;
+  readonly inOpen: boolean;
+  readonly hrClosesAt: string;
+  readonly dtNextAvailableSchedule: Date;
 
   constructor(data: BarbershopDetails) {
     this.nmBarbershop = data.nmBarbershop;
@@ -29,11 +29,11 @@ class BarbershopDetails {
 }
 
 class OfferService {
-  id: number;
-  nmService: string;
-  dsService: string;
-  vlPrice: number;
-  nrDurationMinutes: number;
+  readonly id: number;
+  readonly nmService: string;
+  readonly dsService: string;
+  readonly vlPrice: number;
+  readonly nrDurationMinutes: number;
 
   constructor(data: OfferService) {
     this.id = data.id;
@@ -45,9 +45,9 @@ class OfferService {
 }
 
 class Barber {
-  id: number;
-  nmEmployee: string;
-  specialties: string[];
+  readonly id: number;
+  readonly nmEmployee: string;
+  readonly specialties: string[];
 
   constructor(data: Barber) {
     this.id = data.id;

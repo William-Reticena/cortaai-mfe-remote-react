@@ -1,10 +1,10 @@
 export class BarbershopListResponse {
-  id: number;
-  nmBarbershop: string;
-  dsAddress: string;
-  inOpen: boolean;
-  hrClosesAt: string;
-  dtNextAvailableSchedule: Date;
+  readonly id: number;
+  readonly nmBarbershop: string;
+  readonly dsAddress: string;
+  readonly inOpen: boolean;
+  readonly hrClosesAt: string;
+  readonly dtNextAvailableSchedule: Date;
 
   constructor(data: BarbershopListResponse) {
     this.id = data.id;

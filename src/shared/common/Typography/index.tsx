@@ -18,14 +18,27 @@ const normalizedVariant = (variant: TypographyProps['variant']) => {
       return 'h6';
     case 'body1':
     case 'body2':
+    case 'body3':
       return 'p';
     default:
       return 'p';
   }
 };
 
-export function Typography({ children, variant = 'body1' }: TypographyProps) {
+const variantClassMap: Record<NonNullable<TypographyProps['variant']>, string> = {
+  h1: 'text-4xl font-bold',
+  h2: 'text-3xl font-semibold',
+  h3: 'text-2xl font-medium',
+  h4: 'text-xl font-medium',
+  h5: 'text-lg font-medium',
+  h6: 'text-base font-medium',
+  body1: 'text-base',
+  body2: 'text-sm',
+  body3: 'text-xs',
+};
+
+export function Typography({ bold, children, variant = 'body1' }: TypographyProps) {
   const tag = normalizedVariant(variant);
 
-  return createElement(tag, { className: `typography-${variant}` }, children);
+  return createElement(tag, { className: `${variantClassMap[variant]}${bold ? ' font-bold' : ''}` }, children);
 }
