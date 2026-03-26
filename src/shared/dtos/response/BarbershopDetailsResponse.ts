@@ -44,14 +44,14 @@ export class OfferService {
   }
 }
 
-class Barber {
+export class Barber {
   readonly id: number;
-  readonly nmEmployee: string;
+  readonly nmBarber: string;
   readonly specialties: string[];
 
   constructor(data: Barber) {
     this.id = data.id;
-    this.nmEmployee = data.nmEmployee;
+    this.nmBarber = data.nmBarber;
     this.specialties = data.specialties;
   }
 }

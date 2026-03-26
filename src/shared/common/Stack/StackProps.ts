@@ -4,4 +4,4 @@ export type StackProps = {
   className?: string;
   direction?: 'row' | 'col';
   justify?: 'start' | 'center' | 'end' | 'between' | 'around';
-};
+} & React.HTMLAttributes<HTMLDivElement>;
