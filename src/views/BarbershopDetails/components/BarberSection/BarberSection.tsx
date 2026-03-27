@@ -15,7 +15,7 @@ export function BarberSection({ barbers, handleBarberSelect }: BarberSectionProp
         <For each={barbers} fallback={<p>No barbers found.</p>}>
           {(item) => (
             <Card key={item.id} className='w-full flex items-center gap-4 p-4' pt={{ content: { className: 'p-0!' }, body: { className: 'w-full p-0!' } }}>
-              <Stack direction='row' align='center' className='gap-4 justify-between'>
+              <Stack direction='row' align='center' justify='between' className='gap-4'>
                 <Stack direction='row' align='center' className='gap-4'>
                   <Avatar label={GenericUtils.getFirstLetter(item.nmBarber)} shape='circle' size='large' style={{ backgroundColor: '#9c27b0', color: '#ffffff' }} />
 

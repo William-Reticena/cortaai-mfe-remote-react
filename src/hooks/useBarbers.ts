@@ -1,12 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { BarbersApi } from '../api/BarbersApi';
+import type { CreateAppointmentRequest } from '../shared/dtos/request';
 
 export const useListBarbershops = () => {
   return useQuery({
     queryKey: ['barbershops'],
-    queryFn: async () => {
-      return BarbersApi.getListBarbershops();
-    },
+    queryFn: async () => BarbersApi.getListBarbershops(),
   });
 };
 
@@ -20,8 +19,15 @@ export const useBarbershopDetails = (id: number | string) => {
   return useQuery({
     queryKey: ['barbershop', idNumber],
     enabled: !!id,
-    queryFn: async () => {
-      return BarbersApi.getBarbershopDetails(idNumber);
+    queryFn: async () => BarbersApi.getBarbershopDetails(idNumber),
+  });
+};
+
+export const useScheduleAppointment = () => {
+  return useMutation({
+    mutationKey: ['scheduleAppointment'],
+    mutationFn: async (request: CreateAppointmentRequest) => {
+      return BarbersApi.scheduleAppointment(request);
     },
   });
 };

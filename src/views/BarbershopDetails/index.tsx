@@ -1,20 +1,22 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import { addLocale } from 'primereact/api';
 import { Button } from 'primereact/button';
 import { Calendar as CalendarInput } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
+import { Toast } from 'primereact/toast';
 
 import { Box, For, If, Stack, Typography } from '@/shared/common';
 
-import { useBarbershopDetails } from '@/hooks/useBarbers';
+import { useBarbershopDetails, useScheduleAppointment } from '@/hooks/useBarbers';
 import type { Barber, OfferService } from '@/shared/dtos/response/BarbershopDetailsResponse';
+import { MaskUtils } from '@/utils/MaskUtils';
+import { GenericUtils } from '@/utils/GenericUtils';
 
 import { HeaderDetails } from './components/HeaderDetails/HeaderDetails';
 import { InfoSection } from './components/InfoSection/InfoSection';
 import { ServiceSection } from './components/ServiceSection/ServiceSection';
 import { BarberSection } from './components/BarberSection/BarberSection';
-import { MaskUtils } from '../../utils/MaskUtils';
 
 addLocale('pt-BR', {
   dayNames: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'],
@@ -33,8 +35,11 @@ export function BarbershopDetails() {
   const [barberSelected, setBarberSelected] = useState<Barber | null>(null);
   const [serviceSelected, setServiceSelected] = useState<OfferService | null>(null);
 
+  const toast = useRef<Toast>(null);
+
   const { id } = useParams<{ id: string }>();
   const { data, isLoading } = useBarbershopDetails(id!);
+  const { mutate: scheduleAppointment } = useScheduleAppointment();
 
   const handleBarberSelect = (barber: Barber) => {
     setBarberSelected(barber);
@@ -53,6 +58,33 @@ export function BarbershopDetails() {
 
       return acc;
     }, [] as OfferService[]);
+  };
+
+  const confirmSchedule = (date: Date) => {
+    if (!barberSelected || !serviceSelected) return;
+
+    scheduleAppointment(
+      {
+        idBarber: barberSelected.id,
+        idService: serviceSelected.id,
+        dtAppointment: date,
+      },
+      {
+        onSuccess: () => {
+          toast.current?.show({ severity: 'success', detail: 'Agendamento realizado com sucesso!' });
+        },
+        onError: (e) => {
+          const error = GenericUtils.getErrorObject(e);
+
+          toast.current?.show({ severity: 'error', life: 5000, detail: error.message });
+        },
+      },
+    );
+
+    setModalVisible(false);
+    setBarberSelected(null);
+    setServiceSelected(null);
+    setDate(null);
   };
 
   return (
@@ -94,7 +126,7 @@ export function BarbershopDetails() {
             SERVIÇO
           </Typography>
 
-          <Stack align='center' className='gap-2 mb-6'>
+          <Stack align='center' direction='col' className='gap-2 mb-6'>
             <For each={groupBarberSpecialties(barberSelected)} fallback={<p>No services found.</p>}>
               {(item) => (
                 <Stack
@@ -135,15 +167,19 @@ export function BarbershopDetails() {
               value={date}
               onChange={(e) => e.value && setDate(e.value)}
               readOnlyInput
+              showIcon
+              showTime
+              hourFormat='24'
               dateFormat='dd/mm/yy'
             />
           </If>
 
-          <Button disabled={!date} className='w-full flex justify-center'>
+          <Button disabled={!date} className='w-full flex justify-center' onClick={() => date && confirmSchedule(date)}>
             Confirmar Agendamento
           </Button>
         </Dialog>
       )}
+      <Toast ref={toast} position='top-right' />
     </Box>
   );
 }

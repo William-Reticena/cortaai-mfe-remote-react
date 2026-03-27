@@ -1,4 +1,5 @@
-import { BarbershopDetailsResponse, BarbershopListResponse } from '@/shared/dtos/response';
+import { BarbershopDetailsResponse, BarbershopListResponse, CreateAppointmentResponse } from '@/shared/dtos/response';
+import type { CreateAppointmentRequest } from '@/shared/dtos/request';
 import api from './client';
 
 export class BarbersApi {
@@ -12,5 +13,16 @@ export class BarbersApi {
     const response = await api.get<BarbershopDetailsResponse>(`/barbershops/${id}`);
 
     return new BarbershopDetailsResponse(response.data);
+  }
+
+  static async scheduleAppointment(request: CreateAppointmentRequest) {
+    const response = await api.post<CreateAppointmentResponse>('/appointments', request, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 1,
+      },
+    });
+
+    return new CreateAppointmentResponse(response.data);
   }
 }

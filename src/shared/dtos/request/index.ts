@@ -1,0 +1,1 @@
+export { CreateAppointmentRequest } from './CreateAppointmentRequest';
